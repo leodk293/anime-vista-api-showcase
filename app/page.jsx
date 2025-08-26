@@ -95,7 +95,7 @@ const ApiDocumentation = () => {
           </div>
           <button
             onClick={() => toggleSection(endpointId)}
-            className="ml-4 p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="ml-4 p-2 cursor-pointer hover:bg-gray-100 rounded-lg transition-colors"
           >
             {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
           </button>
@@ -107,7 +107,7 @@ const ApiDocumentation = () => {
           </code>
           <button
             onClick={() => copyToClipboard(exampleUrl || url, endpointId)}
-            className="absolute top-3 right-3 p-1.5 bg-gray-700 hover:bg-gray-600 rounded transition-colors opacity-0 group-hover:opacity-100"
+            className="absolute cursor-pointer top-3 right-3 p-1.5 bg-gray-700 hover:bg-gray-600 rounded transition-colors opacity-0 group-hover:opacity-100"
           >
             <Copy size={14} className="text-gray-300" />
           </button>
@@ -143,7 +143,7 @@ const ApiDocumentation = () => {
             <button
               onClick={() => tryEndpoint(exampleUrl || url, endpointId)}
               disabled={isLoading}
-              className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+              className="flex items-center cursor-pointer gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
             >
               {isLoading ? (
                 <>
@@ -392,7 +392,7 @@ const ApiDocumentation = () => {
                 onClick={() =>
                   copyToClipboard("atnumberone61@gmail.com", "email")
                 }
-                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-lg"
+                className="w-full cursor-pointer bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-lg"
               >
                 <Copy size={16} />
                 Copy Email
@@ -419,7 +419,7 @@ const ApiDocumentation = () => {
               </div>
               <button
                 onClick={() => copyToClipboard("+212 0684301801", "phone")}
-                className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-lg"
+                className="w-full cursor-pointer bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-lg"
               >
                 <Copy size={16} />
                 Copy Number
