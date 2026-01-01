@@ -215,7 +215,7 @@ const ApiDocumentation = () => {
               title="Get All Anime"
               description="Retrieve a complete list of all available anime in the database with comprehensive metadata."
               url="https://anime-vista-api.vercel.app/api/anime-vista-list"
-              endpointId="vista-all"
+              endpointId="all-anime"
             />
 
             <ApiEndpoint
@@ -223,7 +223,7 @@ const ApiDocumentation = () => {
               description="Filter anime by various criteria including season, year, genre, and name. Combine multiple filters for precise results."
               url="https://anime-vista-api.vercel.app/api/anime-vista-filter"
               exampleUrl="https://anime-vista-api.vercel.app/api/anime-vista-filter?season=summer"
-              endpointId="vista-filter"
+              endpointId="anime-filter"
               parameters={[
                 {
                   name: "season",
@@ -241,6 +241,43 @@ const ApiDocumentation = () => {
                 <div className="space-y-2 text-sm">
                   <div className="font-mono bg-white p-2 rounded border">
                     ?season=winter&year=2021&genre=action&name=dragon%20ball
+                  </div>
+                </div>
+              </div>
+            </ApiEndpoint>
+
+            <ApiEndpoint
+              title="Get All Manga"
+              description="Retrieve a complete list of all available manga in the database with comprehensive metadata."
+              url="https://manga-db-management.vercel.app/api/manga-list"
+              endpointId="all-manga"
+            />
+
+            <ApiEndpoint
+              title="Filter Manga"
+              description="Filter manga by genres and status"
+              url="https://manga-db-management.vercel.app/api/manga-list"
+              exampleUrl="https://manga-db-management.vercel.app/api/manga-list?genres=Action"
+              endpointId="manga-filter"
+              parameters={[
+                {
+                  name: "status",
+                  type: "string (Finished, Publishing, On pause)",
+                },
+                {
+                  name: "genre",
+                  type: "string (Adventure, Drama, Action, Horror)",
+                },
+                { name: "name", type: "string" },
+              ]}
+            >
+              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded">
+                <h4 className="font-semibold text-blue-800 mb-2">
+                  Example Usage:
+                </h4>
+                <div className="space-y-2 text-sm">
+                  <div className="font-mono bg-white p-2 rounded border">
+                    ?genre=action&name=dragon%20ball
                   </div>
                 </div>
               </div>
@@ -296,6 +333,27 @@ const ApiDocumentation = () => {
               description="Retrieve the highest rated anime based on user scores and reviews."
               url="https://api.jikan.moe/v4/top/anime"
               endpointId="jikan-top"
+            />
+
+            <ApiEndpoint
+              title="Popular Manga"
+              description="Get the most popular anime based on MyAnimeList popularity rankings and user engagement."
+              url="https://api.jikan.moe/v4/top/manga?filter=bypopularity"
+              endpointId="jikan-popular-manga"
+            />
+
+            <ApiEndpoint
+              title="Top Rated Manga"
+              description="Retrieve the highest rated manga based on user scores and reviews."
+              url="https://api.jikan.moe/v4/top/manga"
+              endpointId="jikan-top-manga"
+            />
+
+            <ApiEndpoint
+              title="Ongoing Manga"
+              description="Fetch manga that are still being published."
+              url="https://api.jikan.moe/v4/top/manga?filter=publishing"
+              endpointId="ongoing-airing"
             />
           </div>
         </section>
@@ -354,6 +412,57 @@ const ApiDocumentation = () => {
                 { name: "animeId", type: "number (MyAnimeList ID)" },
               ]}
             />
+          </div>
+        </section>
+
+        {/* Detailed Manga Information Section */}
+        <section className="mt-10">
+          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 mb-8 border border-white/20">
+            <h2 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-rose-500 to-pink-500 rounded-lg flex items-center justify-center text-white text-lg">
+                📚
+              </div>
+              Detailed Manga Information
+            </h2>
+            <p className="text-purple-200">
+              Comprehensive manga details, characters, and related information
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            <ApiEndpoint
+              title="Manga Details"
+              description="Get comprehensive details about a specific manga including synopsis, ratings, chapters, volumes, and complete metadata."
+              url="https://api.jikan.moe/v4/manga/{mangaId}/full"
+              exampleUrl="https://api.jikan.moe/v4/manga/56805/full"
+              endpointId="manga-details"
+              parameters={[
+                { name: "mangaId", type: "number (MyAnimeList ID)" },
+              ]}
+            >
+              <div className="bg-amber-50 border-l-4 border-amber-400 p-4 rounded">
+                <p className="text-amber-800 text-sm">
+                  <strong>Example:</strong> Use ID 56805 for Sakamoto Days, 131334 for Dandadan, 1 for Monster
+                </p>
+              </div>
+            </ApiEndpoint>
+
+            <ApiEndpoint
+              title="Manga Characters"
+              description="Get all characters associated with a specific manga, including character details and their roles in the story."
+              url="https://api.jikan.moe/v4/manga/{mangaId}/characters"
+              exampleUrl="https://api.jikan.moe/v4/manga/131334/characters"
+              endpointId="manga-characters"
+              parameters={[
+                { name: "mangaId", type: "number (MyAnimeList ID)" },
+              ]}
+            >
+              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded">
+                <p className="text-blue-800 text-sm">
+                  <strong>Note:</strong> Returns characters with their roles (Main, Supporting) and character images
+                </p>
+              </div>
+            </ApiEndpoint>
           </div>
         </section>
 
